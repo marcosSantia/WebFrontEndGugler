@@ -21,7 +21,9 @@ h3.addEventListener('mouseout', cambiarNegro);
 
 // PUNTO 2
 
-const p = document.querySelectorAll('p'); /* esto devuelve un nodelist y esto se puede iterar con un foreach */
+const p = document.querySelectorAll('p'); 
+
+/* esto devuelve un nodelist y esto se puede iterar con un foreach */
 
 p.forEach( (valor, indice)=>{
     valor.addEventListener('mouseenter', ()=>{
