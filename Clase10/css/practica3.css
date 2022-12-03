@@ -1,0 +1,9 @@
+.contenedor{
+    border:solid 2px; 
+    width:400px; 
+    height:400px; 
+    margin:100px; 
+    font-size:250px; 
+    text-align:center;
+}
+
