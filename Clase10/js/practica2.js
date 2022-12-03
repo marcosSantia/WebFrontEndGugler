@@ -19,47 +19,32 @@ imgLinux.addEventListener('mouseout', logoLinux);
 const formulario = document.querySelector('form');
 const btnSubmit = document.querySelector('input[type=submit]');
 
+/* funcion de validar mail */
 function validarEmail(email){
-    var expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+    let expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 
-    var esValido = expReg.test(email);
-
-    if(esValido == true){
-        alert("El email es valido");
+    let verificar = expReg.test(email);
+    if (verificar) {
         return true;
-
     }else{
-        alert("El email no es valido");
         return false;
     }
 }
-
-const email = document.querySelector('input[name=email]');
-console.log(email);
-
-btnSubmit.onclick = (event)=>{
-    event.preventDefault();
+/* cuando se clickee en el boton enviar... */
+btnSubmit.addEventListener("click",(event)=>{
+    event.preventDefault();/*  */
 
     const nombre = document.querySelector('input[name=nombre]');
     const apellido = document.querySelector('input[name=apellido]');
-    const edad = document.querySelector('input[name=edad]');
-    const email = document.querySelector('input[name=email]');
-
-    console.log(email);
+    const edad = document.querySelector('input[name=edad]').value;
+    const email = document.getElementById("email").value;
 
 
+    validarEmail(email);
 
-    if (nombre.value.lenght > 0) {
-        formulario.submit();
-        
-    }else if( edad.value > 0 ){
-        formulario.submit();
-
-    }else if(validarEmail(email) == true){
-        formulario.submit();
-
+    if ((validarEmail(email) == false)||(nombre.value.lenght <= 0)||(apellido.value.lenght <= 0)||(edad<=0)){
+        console.log("formulario no enviado");
     }else{
-        console.log("Detenemos el envio del formulario por default del boton submit.");
+        formulario.submit();
     }
-
-}
+})
